@@ -5,7 +5,6 @@
 dev="$HOME/Development"
 pushd .
 mkdir -p $dev
-cd $dev
 
 echo 'Enter new hostname of the machine (e.g. mbp-paschi)'
   read hostname
