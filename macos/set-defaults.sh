@@ -54,6 +54,9 @@ sudo pmset -a sms 0
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# Finder: show all files
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
