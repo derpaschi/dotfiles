@@ -1,5 +1,5 @@
 [alias]
-	c  = commit -am
+	c  = commit -S -am
 	up = pull
 	p  = push
 	s  = status
