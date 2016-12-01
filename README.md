@@ -15,8 +15,11 @@ script/bootstrap
 
 ## thanks
 
-Thank's to all of your dotfiles. Mine where built out of yours.
+Inspired by the dotfiles of:
 
-[Holman](https://github.com/holman/dotfiles)
+[Zach Holman](https://github.com/holman/dotfiles)
+
 [Paul Millr](https://github.com/paulmillr/dotfiles)
+
 [Pascal Birchler](https://github.com/swissspidy/dotfiles)
+
