@@ -75,6 +75,7 @@ cask 'tower'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'vlc'
+cask 'keybase'
 
 mas 'Xcode', id: 497799835
 mas 'Pages', id: 409201541
