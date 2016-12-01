@@ -75,6 +75,4 @@ cask 'vlc'
 cask 'keybase'
 
 mas 'Xcode', id: 497799835
-mas 'Pages', id: 409201541
 mas 'Harvest', id: 506189836
-mas 'iA Writer', id: 775737590
