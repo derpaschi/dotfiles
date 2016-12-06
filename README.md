@@ -13,7 +13,14 @@ cd ~/.dotfiles
 script/bootstrap
 ```
 
-Dont forget to set the standard shell to zsh (brew version). [How to do that](http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/)
+Dont forget to set the standard shell to zsh (brew version).
+
+```sh
+# put /usr/local/bin/zsh into the shells file, thats the symlinked version of homebrews zsh
+$ sudo vim /etc/shells
+# change the standard shell
+$ chsh -s /usr/local/bin/zsh
+```
 
 ## thanks
 
