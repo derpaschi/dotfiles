@@ -1,5 +1,5 @@
 [alias]
-	c  = commit -S -am
+	c  = commit -S -m
 	up = pull
 	p  = push
 	s  = status
@@ -64,6 +64,8 @@
 [commit]
 	gpgsign = true
 
+[gpg]
+	program = /usr/local/bin/gpg
 [core]
 	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore
