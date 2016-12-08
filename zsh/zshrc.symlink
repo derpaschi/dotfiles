@@ -39,3 +39,9 @@ unset config_files
 
 autoload -U promptinit; promptinit
 prompt pure
+export GOPATH=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+alias ssh='assh wrapper ssh'
+
+eval "$(ssh-agent -s)"
+# ssh-add -K ~/.ssh/id_rsa
