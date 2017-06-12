@@ -43,5 +43,9 @@ export GOPATH=/usr/local/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 alias ssh='assh wrapper ssh'
 
-eval "$(ssh-agent -s)"
-# ssh-add -K ~/.ssh/id_rsa
+ssh-add
+
+eval $(cachalot env)
+
+# Path to WP_I18N_LIB
+export WP_I18N_LIB="/Users/paschi/Development/tools/wpi18n"
