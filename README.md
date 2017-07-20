@@ -10,6 +10,8 @@ Run this:
 ```sh
 git clone git@github.com:hubeRsen/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+git submodule init
+git submodule update --recursive --remote
 script/bootstrap
 ```
 
