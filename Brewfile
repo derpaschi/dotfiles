@@ -72,6 +72,7 @@ cask 'vagrant'
 cask 'virtualbox'
 cask 'vlc'
 cask 'keybase'
+cask 'macdown'
 
 mas 'Xcode', id: 497799835
 mas 'Harvest', id: 506189836
