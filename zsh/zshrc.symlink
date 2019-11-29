@@ -40,7 +40,7 @@ unset config_files
 autoload -U promptinit; promptinit
 prompt pure
 export GOPATH=/usr/local/go
-export PATH="$(brew --prefix php71)/bin:/usr/local/bin:$PATH:$GOROOT/bin:$GOPATH/bin:/Users/paschi/.composer/vendor/bin/"
+export PATH="$(brew --prefix php72)/bin:/usr/local/bin:$PATH:$GOROOT/bin:$GOPATH/bin:/Users/paschi/.composer/vendor/bin/"
 alias ssh='assh wrapper ssh'
 
 ssh-add
@@ -49,3 +49,6 @@ ssh-add
 export WP_I18N_LIB="/Users/paschi/Development/tools/wpi18n"
 
 eval "$(rbenv init -)"
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+export PATH="$(npm config get prefix)/bin:$PATH"

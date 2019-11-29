@@ -50,7 +50,6 @@ brew 'homebrew/php/php72-xdebug'
 brew 'homebrew/php/php72-opcache'
 
 cask '1password'
-cask 'cleanmymac'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
@@ -71,12 +70,12 @@ cask 'qlcolorcode'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'vlc'
-cask 'keybase'
 cask 'macdown'
 cask 'spotify'
 cask 'notion'
 cask 'adobe-creative-cloud'
-
+cask 'harvest'
+cask 'chatmate-for-whatsapp'
+cask 'qbittorrent'
 
 mas 'Xcode', id: 497799835
-mas 'Harvest', id: 506189836
