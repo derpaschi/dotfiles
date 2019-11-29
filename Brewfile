@@ -1,16 +1,12 @@
 cask_args appdir: '/Applications'
 
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
-tap 'caskroom/versions'
+tap 'homebrew/cask-cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 
 tap 'homebrew/bundle'
-tap 'homebrew/completions'
 tap 'homebrew/core'
-tap 'homebrew/dupes'
-tap 'homebrew/php'
 tap 'homebrew/services'
-tap 'homebrew/versions'
 
 brew 'ansible'
 brew 'assh'
