@@ -123,6 +123,7 @@
     useConfigOnly = true
 	name = Stefan Pasch
 	email = stefan.pasch@gmail.com
+	signingkey = 6862CA386557BFA6
 
 [include]
 	# use separate file for username / github token / etc.
