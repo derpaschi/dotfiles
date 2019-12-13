@@ -32,6 +32,7 @@ brew 'unrar'
 brew 'wget'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'zsh-syntax-highlighting'
 brew 'php72'
 
 cask '1password'
