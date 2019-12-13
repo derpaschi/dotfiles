@@ -6,6 +6,16 @@ alias wearerequiredup='cd ~/Development/wearerequired.local/_vagrant && vagrant 
 alias compupstage='composer update && git add composer.json composer.lock && git commit -m "Composer update" && git push && bundle exec cap staging deploy'
 alias composer='ssh -T git@github.com > /dev/null 2>&1 ; ssh -T git@bitbucket.org > /dev/null 2>&1 ; /usr/local/bin/composer'
 
+mockup() {
+	if [ -n "$1" ]
+	then
+		cd ~/Development
+		ts-mockup-generator --scroll 200 --url https://$@
+	else
+		echo "Usage: mockup URL"
+	fi
+}
+
 atlantis() {
     pushd ~/.appflow/playbooks >/dev/null 2>&1
     vagrant $@ atlantis
