@@ -1,3 +1,0 @@
-[submodule "terminal/hightlight"]
-	path = terminal/hightlight
-	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
