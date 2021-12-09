@@ -30,7 +30,7 @@ brew 'unrar'
 brew 'wget'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
-brew 'php@74'
+brew 'php@7.4'
 
 cask '1password'
 cask 'brave-browser'
