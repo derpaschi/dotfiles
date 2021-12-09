@@ -57,11 +57,6 @@ cask 'spotify'
 cask 'notion'
 cask 'adobe-creative-cloud'
 cask 'harvest'
-cask 'outbank'
 cask 'whatsapp'
-cask 'todoist'
-cask 'docker-desktop'
-cask 'fig'
-cask 'deepl'
 
 mas 'Xcode', id: 497799835
