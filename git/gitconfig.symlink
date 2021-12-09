@@ -71,6 +71,7 @@
 	excludesfile = ~/.gitignore
 	autocrlf = false
 	editor = nano
+	pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 
 [diff]
 	noprefix = true
@@ -129,3 +130,12 @@
 	# use separate file for username / github token / etc.
 	# at the end so it can override any of the above configs
 	path = ~/.gitconfig.local
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[pull]
+	rebase = true
+[init]
+	defaultBranch = master

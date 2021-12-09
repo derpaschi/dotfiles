@@ -6,7 +6,7 @@ dev="$HOME/Development"
 pushd .
 mkdir -p $dev
 
-echo 'Enter new hostname of the machine (e.g. mbp-paschi)'
+echo 'Enter new hostname of the machine (e.g. derpaschi)'
   read hostname
   echo "Setting new hostname to $hostname..."
   scutil --set HostName "$hostname"

@@ -6,3 +6,5 @@ alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 alias gc='git commit -S'
 alias gca='git commit -a'
 alias gco='git checkout'
+
+alias ci='git commit -m'

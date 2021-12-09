@@ -21,3 +21,13 @@ newrelic_agent.log
 *.code-workspace
 
 Search-Replace-DB
+
+provision/
+
+debug.log
+
+db.php
+
+wordpress/content/cache/
+
+.vscode
