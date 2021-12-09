@@ -58,5 +58,3 @@ cask 'notion'
 cask 'adobe-creative-cloud'
 cask 'harvest'
 cask 'whatsapp'
-
-mas 'Xcode', id: 497799835
