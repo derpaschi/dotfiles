@@ -4,6 +4,9 @@ alias ssh="assh wrapper ssh --" # assh wrapper
 alias ..='cd ..'
 alias composer="ssh -T git@github.com > /dev/null 2>&1 ; ssh -T git@bitbucket.org > /dev/null 2>&1 ; `brew --prefix`/bin/composer"
 alias l='exa --long --header --git'
+alias start='composer server:start'
+alias stop='composer server:stop'
+alias pygmy='pygmy-go'
 
 mockup() {
 	if [ -n "$1" ]
