@@ -6,7 +6,7 @@ alias composer="ssh -T git@github.com > /dev/null 2>&1 ; ssh -T git@bitbucket.or
 alias l='exa --long --header --git'
 alias start='composer server:start'
 alias stop='composer server:stop'
-alias pygmy='pygmy-go'
+#alias pygmy='pygmy-go'
 
 mockup() {
 	if [ -n "$1" ]
@@ -16,12 +16,6 @@ mockup() {
 	else
 		echo "Usage: mockup URL"
 	fi
-}
-
-freshjobs () {
-	pushd /Users/paschi/Development/amazee.io/freshjobs.ch > /dev/null 2>&1
-	make $@
-	popd > /dev/null 2>&1
 }
 
 export COMPOSER_AUTH="`cat ~/.composer/auth.json`"
