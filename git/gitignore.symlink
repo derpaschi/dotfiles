@@ -29,5 +29,7 @@ debug.log
 db.php
 
 wordpress/content/cache/
+wordpress/content/ewww
+wordpress/wp-content/ewww
 
 .vscode
