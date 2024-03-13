@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# back-me-up
+#
+# A little script to backup my stuff onto my NAS.
+
+delimiter=";"
+declare -a FoldersList=(
+	"/Volumes/OM-NOM-NOM/Pictures/$delimiter/Volumes/home/Photos/" 
+)
+IFS="$delimiter"
+
+for SourceAndDest in "${FoldersList[*]}"
+	do
+		read -a SrcAndDest <<< "$SourceAndDest"
+		Source="${SrcAndDest[0]}"
+		Destination="${SrcAndDest[1]}"
+
+		# Check if sources exist and are accessible
+		if [[ -d "$Source" && -d "$Destination" ]]
+		then
+			# rsync that stuff
+			echo "RSYNC from $Source to $Destination"
+			rsync -arvu "$Source" "$Destination"
+		else
+			echo "Can not sync - some folder doesn't exist."
+		fi
+	done
