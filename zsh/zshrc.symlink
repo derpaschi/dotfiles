@@ -1,5 +1,5 @@
-# CodeWhisperer pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
+# Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -42,10 +42,18 @@ unset config_files
 autoload -U promptinit; promptinit
 prompt pure
 
+export PATH="/opt/homebrew/opt/icu4c@76/bin:$PATH"
+export PATH="/opt/homebrew/opt/icu4c@76/sbin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/icu4c@76/lib" #-L/opt/homebrew/opt/php@8.2/lib
+export CPPFLAGS="-I/opt/homebrew/opt/icu4c@76/include" #-I/opt/homebrew/opt/php@8.2/include
+export PKG_CONFIG_PATH="/opt/homebrew/opt/icu4c@76/lib/pkgconfig"
+
 export GOPATH=/usr/local/go
 export PATH="/usr/local/bin:$PATH:$GOROOT/bin:$GOPATH/bin:/Users/paschi/.composer/vendor/bin/"
 
-ssh-add
+ssh-add --apple-load-keychain 
 
 # Path to WP_I18N_LIB
 export WP_I18N_LIB="/Users/paschi/Development/tools/wpi18n"
@@ -60,11 +68,6 @@ eval "$(fnm env --use-on-cd)"
 # place this after nvm initialization!
 autoload -U add-zsh-hook
 
-export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/php@8.2/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/php@8.2/include"
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
@@ -72,8 +75,5 @@ iterm2_print_user_vars() {
   iterm2_set_user_var nodeVersion $(node -v)
 }
 
-
-[[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
-
-# CodeWhisperer post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
+# Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

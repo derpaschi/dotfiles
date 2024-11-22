@@ -21,7 +21,7 @@ for SourceAndDest in "${FoldersList[*]}"
 		then
 			# rsync that stuff
 			echo "RSYNC from $Source to $Destination"
-			rsync -arvu "$Source" "$Destination"
+			rsync -arvu --exclude=".*" "$Source" "$Destination"
 		else
 			echo "Can not sync - some folder doesn't exist."
 		fi
