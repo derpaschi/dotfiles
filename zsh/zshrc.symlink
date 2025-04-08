@@ -1,5 +1,6 @@
 # Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -44,14 +45,13 @@ prompt pure
 
 export PATH="/opt/homebrew/opt/icu4c@76/bin:$PATH"
 export PATH="/opt/homebrew/opt/icu4c@76/sbin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/icu4c@76/lib" #-L/opt/homebrew/opt/php@8.2/lib
-export CPPFLAGS="-I/opt/homebrew/opt/icu4c@76/include" #-I/opt/homebrew/opt/php@8.2/include
+export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/icu4c@76/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/icu4c@76/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/icu4c@76/lib/pkgconfig"
 
-export GOPATH=/usr/local/go
-export PATH="/usr/local/bin:$PATH:$GOROOT/bin:$GOPATH/bin:/Users/paschi/.composer/vendor/bin/"
+export PATH="/Users/paschi/.composer/vendor/bin/:$PATH"
 
 ssh-add --apple-load-keychain 
 

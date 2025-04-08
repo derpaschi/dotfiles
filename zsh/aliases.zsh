@@ -14,8 +14,6 @@ server() {
 	composer server:$@
 }
 
-#alias pygmy='pygmy-go'
-
 mockup() {
 	if [ -n "$1" ]
 	then
