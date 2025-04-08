@@ -8,7 +8,7 @@ Your dotfiles are how you personalize your system. These are mine. They are basi
 Run this:
 
 ```sh
-git clone git@github.com:hubeRsen/dotfiles.git ~/.dotfiles
+git clone git@github.com:derpaschi/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 git submodule init
 git submodule update --recursive --remote
