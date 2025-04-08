@@ -2,7 +2,7 @@
 #
 # back-me-up
 #
-# A little script to backup my stuff onto my NAS.
+# A little helper script to backup several folders to a network storage.
 
 delimiter=";"
 declare -a FoldersList=(
