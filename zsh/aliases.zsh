@@ -8,6 +8,7 @@ alias start='composer server:start'
 alias stop='composer server:stop'
 alias stopremove='composer server:stop --remove --skip-proxy'
 alias mysqladmin='/opt/homebrew/opt/mysql/bin/mysqladmin'
+alias dockerwp='docker compose run --rm cli wp'
 
 # Alias `server <command>` to `composer server:<command>`.
 server() {
