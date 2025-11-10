@@ -7,6 +7,9 @@ tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/services'
 
+tap 'pygmystack/pygmy'
+brew 'pygmy'
+
 brew 'assh'
 brew 'coreutils'
 brew 'composer'
