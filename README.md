@@ -3,7 +3,7 @@
 Your dotfiles are how you personalize your system. These are mine. They are basically forked from
 [Holman](https://github.com/holman/dotfiles)' great dotfiles. See the description for detailed infos.
 
-## install
+## Install
 
 Run this:
 
@@ -24,7 +24,7 @@ $ sudo vim /etc/shells
 $ chsh -s /usr/local/bin/zsh
 ```
 
-## thanks
+## Thanks
 
 Inspired by the dotfiles of:
 
