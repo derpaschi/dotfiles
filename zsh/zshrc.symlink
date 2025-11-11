@@ -73,6 +73,7 @@ iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
   iterm2_set_user_var phpVersion $(php -v | awk '/^PHP/ { print $2 }')
   iterm2_set_user_var nodeVersion $(node -v)
+  iterm2_set_user_var macUptime "$(uptime | sed -nE 's/.*up ([0-9]+) days.*/\1 days/p')"
 }
 
 # Q post block. Keep at the bottom of this file.
