@@ -1,5 +1,5 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # Q pre block. Keep at the top of this file.
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
@@ -81,7 +81,8 @@ iterm2_print_user_vars() {
 fpath=(/Users/paschi/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
-# End of Docker CLI completions
+# End of Docker CLI completions# Added by Antigravity
+export PATH="/Users/paschi/.antigravity/antigravity/bin:$PATH"
 
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
