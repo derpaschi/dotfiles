@@ -33,7 +33,7 @@ brew "zsh-syntax-highlighting"
 brew "pygmystack/pygmy/pygmy"
 cask "1password", args: { appdir: "/Applications" }
 cask "adobe-creative-cloud", args: { appdir: "/Applications" }
-cask "amazon-q", args: { appdir: "/Applications" }
+cask "kiro-cli", args: { appdir: "/Applications" }
 cask "arc", args: { appdir: "/Applications" }
 cask "chatgpt", args: { appdir: "/Applications" }
 cask "cursor", args: { appdir: "/Applications" }
