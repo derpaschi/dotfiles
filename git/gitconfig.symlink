@@ -27,7 +27,7 @@
 	gpgsign = true
 
 [gpg]
-	program = /usr/local/bin/gpg
+	program = gpg
 
 [core]
 	attributesfile = ~/.gitattributes

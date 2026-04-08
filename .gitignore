@@ -1,1 +1,12 @@
 git/gitconfig.local.symlink
+
+# Secrets & credentials
+*.env
+*.key
+*.pem
+*.p12
+*.pfx
+auth.json
+**/credentials*
+**/secret*
+.localrc

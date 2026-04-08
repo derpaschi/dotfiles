@@ -15,13 +15,22 @@ git submodule update --recursive --remote
 script/bootstrap
 ```
 
-Dont forget to set the standard shell to zsh (brew version).
+**Prerequisites:** Sign into the Mac App Store before running `script/bootstrap` (required for `mas` to install App Store apps).
+
+Set the default shell to zsh (Homebrew version):
 
 ```sh
-# put /usr/local/bin/zsh into the shells file, thats the symlinked version of homebrews zsh
+# Add Homebrew's zsh to allowed shells
+# Apple Silicon: /opt/homebrew/bin/zsh
+# Intel Mac:     /usr/local/bin/zsh
 $ sudo vim /etc/shells
-# change the standard shell
-$ chsh -s /usr/local/bin/zsh
+# Change the default shell
+$ chsh -s /opt/homebrew/bin/zsh
+```
+
+Copy the localrc template for local/private environment variables:
+```sh
+cp ~/.dotfiles/localrc.example ~/.localrc
 ```
 
 ## Thanks

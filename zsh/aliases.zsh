@@ -24,5 +24,3 @@ mockup() {
 		echo "Usage: mockup URL"
 	fi
 }
-
-export COMPOSER_AUTH="`cat ~/.composer/auth.json`"

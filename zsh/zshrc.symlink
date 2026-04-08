@@ -30,6 +30,9 @@ do
   source $file
 done
 
+# Docker CLI completions (must be before compinit)
+[[ -d "$HOME/.docker/completions" ]] && fpath=($HOME/.docker/completions $fpath)
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
@@ -53,12 +56,12 @@ export LDFLAGS="-L/opt/homebrew/opt/icu4c@76/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/icu4c@76/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/icu4c@76/lib/pkgconfig"
 
-export PATH="/Users/paschi/.composer/vendor/bin/:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 ssh-add --apple-load-keychain 
 
 # Path to WP_I18N_LIB
-export WP_I18N_LIB="/Users/paschi/Development/tools/wpi18n"
+[[ -d "$HOME/Development/tools/wpi18n" ]] && export WP_I18N_LIB="$HOME/Development/tools/wpi18n"
 
 eval "$(rbenv init -)"
 export PATH="$(npm config get prefix)/bin:$PATH"
@@ -78,20 +81,12 @@ iterm2_print_user_vars() {
   iterm2_set_user_var macUptime "$(uptime | sed -nE 's/.*up ([0-9]+) days.*/\1 days/p')"
 }
 
-# Q post block. Keep at the bottom of this file.
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/paschi/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions# Added by Antigravity
-export PATH="/Users/paschi/.antigravity/antigravity/bin:$PATH"
+# Antigravity
+[[ -d "$HOME/.antigravity/antigravity/bin" ]] && export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 
 # Turso
-export PATH="$PATH:/Users/paschi/.turso"
-
-# Clawdbot
-# export PATH="/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin:$PATH"
+[[ -d "$HOME/.turso" ]] && export PATH="$PATH:$HOME/.turso"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

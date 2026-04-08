@@ -44,9 +44,11 @@ The bootstrap script:
 ### After Initial Setup
 Set zsh as default shell:
 ```sh
-# Add homebrew zsh to allowed shells
-sudo vim /etc/shells  # add /usr/local/bin/zsh
-chsh -s /usr/local/bin/zsh
+# Add homebrew zsh to allowed shells (use the path matching your architecture)
+# Apple Silicon: /opt/homebrew/bin/zsh
+# Intel Mac:     /usr/local/bin/zsh
+sudo vim /etc/shells  # add the appropriate zsh path
+chsh -s /opt/homebrew/bin/zsh
 ```
 
 ### Regular Updates
@@ -86,8 +88,7 @@ Defined across various `aliases.zsh` files:
 
 ### Environment Variables
 - `$ZSH` - Points to `~/.dotfiles`
-- `$COMPOSER_AUTH` - Loaded from `~/.composer/auth.json`
-- `WP_I18N_LIB` - WordPress i18n library path
+- `WP_I18N_LIB` - WordPress i18n library path (set if `~/Development/tools/wpi18n` exists)
 
 ## Development Tools Setup
 

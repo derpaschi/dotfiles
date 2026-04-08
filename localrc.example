@@ -1,0 +1,18 @@
+# ~/.localrc
+#
+# This file is sourced by zshrc if it exists at ~/.localrc
+# Use it for environment variables and settings that should NOT be committed
+# to the dotfiles repository (secrets, machine-specific config, etc.)
+#
+# Copy this file to ~/.localrc and fill in your values:
+#   cp ~/.dotfiles/localrc.example ~/.localrc
+
+# Example: Private API tokens
+# export GITHUB_TOKEN="your-token-here"
+# export NPM_TOKEN="your-token-here"
+
+# Example: Machine-specific paths
+# export PROJECTS_DIR="$HOME/Projects"
+
+# Example: Work-specific git config overrides
+# export GIT_AUTHOR_EMAIL="your-work-email@company.com"

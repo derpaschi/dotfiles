@@ -1,41 +1,53 @@
+tap "oven-sh/bun"
 tap "pygmystack/pygmy"
-brew "openssl@3"
+tap "steipete/tap"
 brew "assh"
-brew "curl"
-brew "readline"
 brew "composer"
 brew "coreutils"
+brew "curl"
 brew "fnm"
 brew "gh"
+brew "git-lfs"
+brew "gnupg"
 brew "gpatch"
-brew "python@3.13"
 brew "grc"
 brew "helm"
+brew "htop"
 brew "hub"
 brew "imagemagick"
-brew "kubernetes-cli"
+brew "khal"
+brew "kustomize"
 brew "libgit2"
 brew "mas"
+brew "minikube"
 brew "mkcert"
 brew "node"
+brew "node@22"
 brew "nss"
+brew "openssl@3"
+brew "oven-sh/bun/bun"
 brew "php@8.2"
 brew "php@8.3", link: true
+brew "pnpm"
 brew "pure"
-brew "ruby-build"
+brew "python@3.13"
 brew "rbenv"
+brew "readline"
+brew "ruby-build"
 brew "scw"
 brew "spaceman-diff"
+brew "steipete/tap/remindctl"
 brew "swaks"
+brew "vdirsyncer"
 brew "wget"
 brew "zsh"
 brew "zsh-syntax-highlighting"
 brew "pygmystack/pygmy/pygmy"
 cask "1password", args: { appdir: "/Applications" }
 cask "adobe-creative-cloud", args: { appdir: "/Applications" }
-cask "kiro-cli", args: { appdir: "/Applications" }
 cask "arc", args: { appdir: "/Applications" }
 cask "chatgpt", args: { appdir: "/Applications" }
+cask "codexbar", args: { appdir: "/Applications" }
 cask "cursor", args: { appdir: "/Applications" }
 cask "deepl", args: { appdir: "/Applications" }
 cask "dropbox", args: { appdir: "/Applications" }
@@ -44,7 +56,7 @@ cask "google-chrome", args: { appdir: "/Applications" }
 cask "google-drive", args: { appdir: "/Applications" }
 cask "iterm2", args: { appdir: "/Applications" }
 cask "keybase"
-cask "macdown", args: { appdir: "/Applications" }
+cask "kiro-cli", args: { appdir: "/Applications" }
 cask "microsoft-auto-update"
 cask "microsoft-teams", args: { appdir: "/Applications" }
 cask "mimestream", args: { appdir: "/Applications" }
@@ -65,6 +77,7 @@ cask "visual-studio-code", args: { appdir: "/Applications" }
 cask "vlc", args: { appdir: "/Applications" }
 cask "whatsapp", args: { appdir: "/Applications" }
 mas "AusweisApp", id: 948660805
+mas "Brother iPrint&Scan", id: 1193539993
 mas "GarageBand", id: 682658836
 mas "Harvest", id: 506189836
 mas "iMovie", id: 408981434
@@ -77,6 +90,9 @@ mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Outbank", id: 1094255754
 mas "Pages", id: 409201541
+mas "Telegram", id: 747648890
+mas "WireGuard", id: 1451685025
+mas "Windows App", id: 1295203466
 vscode "amazonwebservices.codewhisperer-for-command-line-companion"
 vscode "annsk.alignment"
 vscode "bmewburn.vscode-intelephense-client"
