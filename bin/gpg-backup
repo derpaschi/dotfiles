@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# gpg-backup
+#
+# Exports GPG keys (private, public, trust) to a temporary directory,
+# then opens Finder so you can drag them into 1Password.
+# Files are automatically deleted after 5 minutes.
+
+set -e
+
+BACKUP_DIR=$(mktemp -d -t gpg-backup)
+trap 'echo ""; echo "Cleaning up $BACKUP_DIR..."; rm -rf "$BACKUP_DIR"; echo "Done."' EXIT
+
+echo "Exporting GPG keys to $BACKUP_DIR..."
+echo ""
+
+gpg --export-secret-keys --armor > "$BACKUP_DIR/gpg-private-keys.asc"
+echo "  Private keys exported."
+
+gpg --export --armor > "$BACKUP_DIR/gpg-public-keys.asc"
+echo "  Public keys exported."
+
+gpg --export-ownertrust > "$BACKUP_DIR/gpg-trust.txt"
+echo "  Trust database exported."
+
+echo ""
+echo "Opening Finder — drag the files into 1Password now."
+echo "Files will be auto-deleted in 5 minutes or when you press Enter."
+echo ""
+
+open "$BACKUP_DIR"
+
+echo "To restore on a new machine:"
+echo "  gpg --import gpg-private-keys.asc"
+echo "  gpg --import gpg-public-keys.asc"
+echo "  gpg --import-ownertrust gpg-trust.txt"
+echo ""
+read -r -p "Press Enter to delete the exported files..."
