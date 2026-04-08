@@ -8,7 +8,6 @@ brew "curl"
 brew "fnm"
 brew "gh"
 brew "git-lfs"
-brew "gnupg"
 brew "gpatch"
 brew "grc"
 brew "helm"
@@ -54,6 +53,7 @@ cask "dropbox", args: { appdir: "/Applications" }
 cask "firefox", args: { appdir: "/Applications" }
 cask "google-chrome", args: { appdir: "/Applications" }
 cask "google-drive", args: { appdir: "/Applications" }
+cask "gpg-suite"
 cask "iterm2", args: { appdir: "/Applications" }
 cask "keybase"
 cask "kiro-cli", args: { appdir: "/Applications" }
