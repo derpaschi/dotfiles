@@ -1,11 +1,24 @@
 {
-  "model": "opus",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "/Users/paschi/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
-    "safety-net@cc-marketplace": true
+    "safety-net@cc-marketplace": true,
+    "codex@openai-codex": true,
+    "code-review@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
   }
 }

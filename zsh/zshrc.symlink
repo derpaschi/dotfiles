@@ -1,5 +1,7 @@
+
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+
 # Q pre block. Keep at the top of this file.
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
@@ -84,8 +86,12 @@ compinit
 # End of Docker CLI completions# Added by Antigravity
 export PATH="/Users/paschi/.antigravity/antigravity/bin:$PATH"
 
-# Kiro CLI post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
 
 # Turso
 export PATH="$PATH:/Users/paschi/.turso"
+
+# Clawdbot
+# export PATH="/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin:$PATH"
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
