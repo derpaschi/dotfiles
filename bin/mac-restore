@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+# mac-restore
+#
+# Post-bootstrap restore assistant for a fresh Mac.
+# Run AFTER: script/bootstrap has completed successfully.
+# Guides you through cloud setup, GPG import, secrets, and app settings.
+
+set -e
+
+echo "=== Mac Restore Assistant ==="
+echo ""
+
+# Phase 1: Cloud services
+echo "Phase 1: Cloud-Dienste einrichten"
+echo "─────────────────────────────────"
+
+if [ ! -d "$HOME/Dropbox/Mackup" ] || [ -z "$(ls -A "$HOME/Dropbox/Mackup" 2>/dev/null)" ]; then
+  echo "→ Open Dropbox and sign in."
+  echo "  Wait until the Mackup folder has finished syncing."
+  read -r -p "Press Enter when Dropbox/Mackup is synced..."
+fi
+
+if [ -d "/Applications/1Password.app" ]; then
+  echo ""
+  echo "→ Open 1Password and sign in."
+  read -r -p "Press Enter when 1Password is ready..."
+fi
+
+# Phase 2: GPG keys
+echo ""
+echo "Phase 2: GPG Keys importieren"
+echo "─────────────────────────────"
+echo "  Export the 3 GPG files from 1Password, then run:"
+echo "    gpg --import ~/Downloads/gpg-private-keys.asc"
+echo "    gpg --import ~/Downloads/gpg-public-keys.asc"
+echo "    gpg --import-ownertrust ~/Downloads/gpg-trust.txt"
+echo "  Then delete the exported files."
+read -r -p "Press Enter when done (or Enter to skip)..."
+
+# Phase 3: Local config
+if [ ! -f "$HOME/.localrc" ]; then
+  echo ""
+  echo "Phase 3: Local config"
+  echo "─────────────────────"
+  cp "$HOME/.dotfiles/localrc.example" "$HOME/.localrc"
+  echo "  Created ~/.localrc from template."
+  echo "  Edit it to add your tokens and secrets."
+fi
+
+# Phase 4: App settings
+echo ""
+echo "Phase 4: App-Einstellungen"
+echo "──────────────────────────"
+if command -v mackup &> /dev/null && [ -d "$HOME/Dropbox/Mackup" ]; then
+  echo "→ Restoring app settings via mackup..."
+  mackup restore --force
+  echo "  Done."
+else
+  echo "⚠ Skipping: mackup not installed or Dropbox not synced."
+fi
+
+# Phase 5: Git remote
+echo ""
+read -r -p "Switch dotfiles remote to SSH? (y/N) " switch_ssh
+if [[ "$switch_ssh" =~ ^[Yy]$ ]]; then
+  git -C "$HOME/.dotfiles" remote set-url origin git@github.com:derpaschi/dotfiles.git
+  echo "  Switched to SSH."
+fi
+
+echo ""
+echo "=== Restore complete ==="
+echo "Run 'dot' to verify everything works."

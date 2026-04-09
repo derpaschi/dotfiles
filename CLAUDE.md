@@ -70,13 +70,25 @@ The `dot` command:
 - `script/bootstrap` - Initial setup script
 - `script/install` - Runs `brew bundle` and all `install.sh` files
 - `bin/dot` - Main update/maintenance command
+- `bin/mac-backup` - Backup GUI app settings to Dropbox via mackup (before switching devices)
+- `bin/mac-sync` - Pull dotfiles + restore app settings (when switching to this Mac)
+- `bin/mac-restore` - Interactive restore assistant for fresh Mac setups
+- `bin/gpg-backup` - Export GPG keys for 1Password backup
 
 ### Configuration
 - `Brewfile` - Homebrew packages and casks to install
 - `git/gitconfig.symlink` - Main git configuration
 - `git/gitconfig.local.symlink` - Local git config (generated, not tracked)
 - `zsh/zshrc.symlink` - Main zsh configuration
+- `mackup/mackup.cfg.symlink` - mackup config (allowlist of GUI apps synced via Dropbox)
+- `localrc.example` - Template for `~/.localrc` (private env vars, not tracked)
 - `~/.localrc` - Local environment variables (not tracked, sourced if present)
+
+### Multi-Mac Sync
+App settings for GUI apps (Cursor, iTerm2, VS Code, Sublime Text, TablePlus, Tower, Transmit, etc.) are synced between Macs via mackup (copy mode) through Dropbox. Shell/Git/macOS config is managed by this dotfiles repo — mackup only handles GUI app preferences to avoid conflicts.
+
+- **Switching devices:** `mac-backup` on the old Mac, `mac-sync` on the new Mac
+- **Fresh Mac setup:** `script/bootstrap` then `mac-restore`
 
 ### Key Aliases & Functions
 Defined across various `aliases.zsh` files:

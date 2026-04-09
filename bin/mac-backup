@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# mac-backup
+#
+# Backup app settings before switching devices.
+# Uses mackup (copy mode) to save GUI app preferences to Dropbox.
+
+set -e
+
+if ! command -v mackup &> /dev/null; then
+  echo "mackup not installed. Run 'brew install mackup' first."
+  exit 1
+fi
+
+if [ ! -d "$HOME/Dropbox" ]; then
+  echo "Dropbox not found. Sign in to Dropbox first."
+  exit 1
+fi
+
+echo "› Backing up app settings via mackup..."
+mackup backup --force
+echo "› Done. App settings saved to ~/Dropbox/Mackup/"

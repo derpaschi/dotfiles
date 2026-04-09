@@ -1,0 +1,15 @@
+[storage]
+engine = dropbox
+directory = Mackup
+
+[applications_to_sync]
+cursor
+iterm2
+sublime-text
+tableplus
+tower
+transmit
+visual-studio-code
+poedit
+spotify
+vlc

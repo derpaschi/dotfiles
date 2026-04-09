@@ -3,19 +3,17 @@
 Your dotfiles are how you personalize your system. These are mine. They are basically forked from
 [Holman](https://github.com/holman/dotfiles)' great dotfiles. See the description for detailed infos.
 
-## Install
+## Fresh Mac Setup
 
-Run this:
+**Prerequisites:** Sign into the Mac App Store before running bootstrap (required for `mas`).
 
 ```sh
-git clone git@github.com:derpaschi/dotfiles.git ~/.dotfiles
+xcode-select --install
+git clone https://github.com/derpaschi/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-git submodule init
-git submodule update --recursive --remote
 script/bootstrap
+mac-restore
 ```
-
-**Prerequisites:** Sign into the Mac App Store before running `script/bootstrap` (required for `mas` to install App Store apps).
 
 Set the default shell to zsh (Homebrew version):
 
@@ -28,10 +26,33 @@ $ sudo vim /etc/shells
 $ chsh -s /opt/homebrew/bin/zsh
 ```
 
-Copy the localrc template for local/private environment variables:
+## Switching Between Macs
+
+When leaving a Mac:
 ```sh
-cp ~/.dotfiles/localrc.example ~/.localrc
+mac-backup
 ```
+
+When arriving on a Mac:
+```sh
+mac-sync
+```
+
+## Regular Updates
+
+```sh
+dot
+```
+
+## Commands
+
+| Command | Purpose |
+|---------|---------|
+| `dot` | Update dotfiles, Homebrew, and dependencies |
+| `mac-backup` | Backup app settings to Dropbox (before switching devices) |
+| `mac-sync` | Pull dotfiles + restore app settings (when switching to this Mac) |
+| `mac-restore` | Interactive restore assistant (for fresh Mac setups) |
+| `gpg-backup` | Export GPG keys for 1Password backup |
 
 ## Thanks
 

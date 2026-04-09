@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# mac-sync
+#
+# Run when switching to this Mac from another.
+# Pulls latest dotfiles, installs dependencies, and restores app settings.
+
+set -e
+
+export ZSH=$HOME/.dotfiles
+
+echo "› Pulling latest dotfiles..."
+git -C "$ZSH" pull
+
+echo "› Installing dependencies..."
+"$ZSH"/script/install
+
+# Restore app settings
+if ! command -v mackup &> /dev/null; then
+  echo "⚠ mackup not installed. Skipping app restore."
+  exit 0
+fi
+
+# Check Dropbox readiness
+if [ ! -d "$HOME/Dropbox/Mackup" ] || [ -z "$(ls -A "$HOME/Dropbox/Mackup" 2>/dev/null)" ]; then
+  echo "⚠ Dropbox/Mackup folder not found or empty."
+  echo "  Open Dropbox and wait for sync to complete."
+  read -r -p "Press Enter when ready (or Ctrl+C to skip)..."
+fi
+
+# Close apps that mackup will restore (prevent overwrite on quit)
+echo "› Closing apps before restore..."
+for app in "Cursor" "iTerm2" "Sublime Text" "Visual Studio Code" "TablePlus" "Tower" "Transmit" "Poedit" "Spotify" "VLC"; do
+  osascript -e "tell application \"$app\" to quit" 2>/dev/null || true
+done
+sleep 2
+
+echo "› Restoring app settings via mackup..."
+mackup restore --force
+echo "› Sync complete. Restart your apps."
