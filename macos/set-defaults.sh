@@ -130,6 +130,12 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
+# Enable spring loading for directories (drag-drop into folders)
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Remove the spring loading delay
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
 # Set the Finder prefs for showing a few different volumes on the Desktop.
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
@@ -245,3 +251,80 @@ defaults write com.apple.sharingd DiscoverableMode -string "Contacts Only"
 
 # Disable Bluetooth sharing
 defaults -currentHost write com.apple.Bluetooth PrefKeyServicesEnabled -bool false
+
+###############################################################################
+# Dock                                                                        #
+###############################################################################
+
+# Don't auto-hide the Dock
+defaults write com.apple.dock autohide -bool false
+
+# Don't show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Minimize windows into their application's icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+###############################################################################
+# Menu Bar                                                                    #
+###############################################################################
+
+# Show Bluetooth icon in menu bar
+defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+
+# Clock: show only time (HH:mm), no date
+defaults write com.apple.menuextra.clock ShowDate -int 2
+defaults write com.apple.menuextra.clock ShowSeconds -bool false
+defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+
+###############################################################################
+# Disk Utility                                                                #
+###############################################################################
+
+# Show all devices (not just volumes)
+defaults write com.apple.DiskUtility SidebarShowAllDevices -bool true
+
+###############################################################################
+# Login Window                                                                #
+###############################################################################
+
+# Show language menu on login screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+# Disable guest account
+sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+
+###############################################################################
+# Mission Control                                                             #
+###############################################################################
+
+# Don't automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+###############################################################################
+# Printer                                                                     #
+###############################################################################
+
+# Automatically quit printer app once print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+###############################################################################
+# TextEdit                                                                    #
+###############################################################################
+
+# Use plain text mode for new documents
+defaults write com.apple.TextEdit RichText -int 0
+
+# Open files as UTF-8
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+for app in "Dock" "Finder" "SystemUIServer"; do
+  killall "${app}" &> /dev/null || true
+done
+
+echo "Done. Note that some of these changes require a logout/restart to take effect."
