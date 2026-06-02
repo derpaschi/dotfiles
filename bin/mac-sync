@@ -30,7 +30,7 @@ fi
 
 # Close apps that mackup will restore (prevent overwrite on quit)
 echo "› Closing apps before restore..."
-for app in "Cursor" "iTerm2" "Sublime Text" "Visual Studio Code" "TablePlus" "Tower" "Transmit" "Poedit" "Spotify" "VLC"; do
+for app in "Cursor" "Sublime Text" "Visual Studio Code" "TablePlus" "Tower" "Transmit" "Poedit" "Spotify" "VLC"; do
   osascript -e "tell application \"$app\" to quit" 2>/dev/null || true
 done
 sleep 2
