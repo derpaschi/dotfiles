@@ -1,20 +1,25 @@
 tap "oven-sh/bun"
 tap "pygmystack/pygmy"
 tap "steipete/tap"
+brew "openssl@3"
 brew "assh"
+brew "curl"
+brew "readline"
 brew "composer"
 brew "coreutils"
-brew "curl"
 brew "fnm"
 brew "gh"
 brew "git-lfs"
+brew "gnupg"
 brew "gpatch"
+brew "python@3.13"
 brew "grc"
 brew "helm"
 brew "htop"
 brew "hub"
 brew "imagemagick"
 brew "khal"
+brew "kubernetes-cli"
 brew "kustomize"
 brew "libgit2"
 brew "mackup"
@@ -24,37 +29,34 @@ brew "mkcert"
 brew "node"
 brew "node@22"
 brew "nss"
-brew "openssl@3"
-brew "oven-sh/bun/bun"
 brew "php@8.2"
 brew "php@8.3", link: true
 brew "pnpm"
 brew "pure"
-brew "python@3.13"
-brew "rbenv"
-brew "readline"
 brew "ruby-build"
+brew "rbenv"
 brew "scw"
 brew "spaceman-diff"
-brew "steipete/tap/remindctl"
 brew "swaks"
 brew "vdirsyncer"
 brew "wget"
+brew "witr"
 brew "zsh"
 brew "zsh-syntax-highlighting"
+brew "oven-sh/bun/bun"
 brew "pygmystack/pygmy/pygmy"
+brew "steipete/tap/remindctl"
 cask "1password", args: { appdir: "/Applications" }
 cask "adobe-creative-cloud", args: { appdir: "/Applications" }
 cask "arc", args: { appdir: "/Applications" }
 cask "chatgpt", args: { appdir: "/Applications" }
-cask "codexbar", args: { appdir: "/Applications" }
+cask "codexbar"
 cask "cursor", args: { appdir: "/Applications" }
 cask "deepl", args: { appdir: "/Applications" }
 cask "dropbox", args: { appdir: "/Applications" }
 cask "firefox", args: { appdir: "/Applications" }
 cask "google-chrome", args: { appdir: "/Applications" }
 cask "google-drive", args: { appdir: "/Applications" }
-cask "gpg-suite"
 cask "iterm2", args: { appdir: "/Applications" }
 cask "keybase"
 cask "kiro-cli", args: { appdir: "/Applications" }
@@ -63,8 +65,8 @@ cask "microsoft-teams", args: { appdir: "/Applications" }
 cask "mimestream", args: { appdir: "/Applications" }
 cask "notion-calendar", args: { appdir: "/Applications" }
 cask "poedit", args: { appdir: "/Applications" }
-cask "qlvideo", args: { appdir: "/Applications" }
 cask "quicklook-json", args: { appdir: "/Applications" }
+cask "quicklook-video", args: { appdir: "/Applications" }
 cask "raycast", args: { appdir: "/Applications" }
 cask "setapp", args: { appdir: "/Applications" }
 cask "slack", args: { appdir: "/Applications" }
@@ -86,16 +88,18 @@ mas "Infuse", id: 1136220934
 mas "Keynote", id: 409183694
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Outlook", id: 985367838
+mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Outbank", id: 1094255754
 mas "Pages", id: 409201541
 mas "Telegram", id: 747648890
-mas "WireGuard", id: 1451685025
 mas "Windows App", id: 1295203466
+mas "WireGuard", id: 1451685025
 vscode "amazonwebservices.codewhisperer-for-command-line-companion"
 vscode "annsk.alignment"
+vscode "anthropic.claude-code"
 vscode "bmewburn.vscode-intelephense-client"
 vscode "cpylua.language-postcss"
 vscode "dbaeumer.vscode-eslint"
@@ -128,3 +132,10 @@ vscode "usernamehw.errorlens"
 vscode "valeryanm.vscode-phpsab"
 vscode "xdebug.php-debug"
 vscode "xdebug.php-pack"
+npm "@gsd-build/sdk"
+npm "@openai/codex"
+npm "@wordpress/env"
+npm "corepack"
+npm "pnpm"
+npm "pure-prompt"
+npm "tailwindcss"
