@@ -51,7 +51,6 @@ cask "1password", args: { appdir: "/Applications" }
 cask "adobe-creative-cloud", args: { appdir: "/Applications" }
 cask "arc", args: { appdir: "/Applications" }
 cask "chatgpt", args: { appdir: "/Applications" }
-cask "codexbar"
 cask "cursor", args: { appdir: "/Applications" }
 cask "deepl", args: { appdir: "/Applications" }
 cask "dropbox", args: { appdir: "/Applications" }
@@ -74,7 +73,6 @@ cask "slack", args: { appdir: "/Applications" }
 cask "spotify", args: { appdir: "/Applications" }
 cask "sublime-text", args: { appdir: "/Applications" }
 cask "tableplus", args: { appdir: "/Applications" }
-cask "todoist-app", args: { appdir: "/Applications" }
 cask "tower", args: { appdir: "/Applications" }
 cask "transmit", args: { appdir: "/Applications" }
 cask "visual-studio-code", args: { appdir: "/Applications" }

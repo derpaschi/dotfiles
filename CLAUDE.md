@@ -70,6 +70,7 @@ The `dot` command:
 - `script/bootstrap` - Initial setup script
 - `script/install` - Runs `brew bundle` and all `install.sh` files
 - `bin/dot` - Main update/maintenance command
+- `bin/mac-snapshot` - Regenerate the Brewfile from currently installed software (`brew bundle dump`); shows the diff and asks before committing
 - `bin/mac-backup` - Backup GUI app settings to Dropbox via mackup (before switching devices)
 - `bin/mac-sync` - Pull dotfiles + restore app settings (when switching to this Mac)
 - `bin/mac-restore` - Interactive restore assistant for fresh Mac setups
@@ -87,7 +88,8 @@ The `dot` command:
 ### Multi-Mac Sync
 App settings for GUI apps (Cursor, iTerm2, VS Code, Sublime Text, TablePlus, Tower, Transmit, etc.) are synced between Macs via mackup (copy mode) through Dropbox. Shell/Git/macOS config is managed by this dotfiles repo — mackup only handles GUI app preferences to avoid conflicts.
 
-- **Switching devices:** `mac-backup` on the old Mac, `mac-sync` on the new Mac
+- **Capturing installed software:** `mac-snapshot` regenerates the `Brewfile` from what's installed (brews, casks, `mas`, editor extensions, npm globals) so the repo stays a faithful snapshot of the machine
+- **Switching devices:** `mac-snapshot` + `mac-backup` on the old Mac, then `mac-sync` on the new Mac
 - **Fresh Mac setup:** `script/bootstrap` then `mac-restore`
 
 ### Key Aliases & Functions

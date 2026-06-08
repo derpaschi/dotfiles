@@ -1,0 +1,79 @@
+#!/bin/bash
+#
+# mac-snapshot
+#
+# Capture the current machine's installed software into the repo Brewfile so it
+# stays a faithful snapshot of this Mac. `brew bundle dump` covers taps, brews,
+# casks (with their args), Mac App Store apps, editor extensions and npm globals.
+#
+# GUI app *settings* are a separate concern -- back those up with `mac-backup`.
+#
+# Usage: mac-snapshot [-y|--yes] [-h|--help]
+#   -y, --yes   Commit the updated Brewfile without prompting.
+#   -h, --help  Show this help and exit.
+
+set -euo pipefail
+
+parentDirectory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+dotfilesDirectory="$(cd "$(dirname "$parentDirectory")" && pwd -P)"
+brewfile="$dotfilesDirectory/Brewfile"
+
+autoCommit=false
+
+while test $# -gt 0; do
+	case "$1" in
+		"-h"|"--help")
+			# Print the contiguous comment header (from line 3) as help text.
+			awk 'NR>=3 && /^#/ {sub(/^# ?/, ""); print; next} NR>=3 {exit}' "${BASH_SOURCE[0]}"
+			exit 0
+			;;
+		"-y"|"--yes")
+			autoCommit=true
+			;;
+		*)
+			echo "Invalid option: $1" >&2
+			echo "Run 'mac-snapshot --help' for usage." >&2
+			exit 1
+			;;
+	esac
+	shift
+done
+
+if ! command -v brew &>/dev/null; then
+	echo "Homebrew not found. Install it first (see homebrew/install.sh)." >&2
+	exit 1
+fi
+
+echo "› brew bundle dump → $brewfile"
+brew bundle dump --force --file="$brewfile"
+
+# Nothing changed? Then we're already in sync.
+if git -C "$dotfilesDirectory" diff --quiet -- "$brewfile"; then
+	echo "› Brewfile already matches this machine. Nothing to do."
+	echo "  (Remember: GUI app settings are captured separately via 'mac-backup'.)"
+	exit 0
+fi
+
+echo
+echo "› Changes since last snapshot:"
+git -C "$dotfilesDirectory" --no-pager diff --stat -- "$brewfile"
+echo
+git -C "$dotfilesDirectory" --no-pager diff -- "$brewfile"
+echo
+
+if ! $autoCommit; then
+	printf "› Commit this Brewfile snapshot? [y/N] "
+	read -r reply
+	case "$reply" in
+		[yY]|[yY][eE][sS]) ;;
+		*)
+			echo "› Left changes uncommitted. Review with 'git -C $dotfilesDirectory diff'."
+			exit 0
+			;;
+	esac
+fi
+
+git -C "$dotfilesDirectory" add "$brewfile"
+git -C "$dotfilesDirectory" commit -m "Snapshot Brewfile ($(date +%Y-%m-%d))"
+echo "› Committed. Push when ready: git -C $dotfilesDirectory push"
+echo "  (GUI app settings are captured separately via 'mac-backup'.)"
