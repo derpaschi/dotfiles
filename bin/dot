@@ -53,6 +53,14 @@ $ZSH/macos/set-hostname.sh
 # Install homebrew
 $ZSH/homebrew/install.sh 2>&1
 
+# Make sure brew is on PATH for the rest of this run. On a first-time install
+# (especially Apple Silicon, where brew lives in /opt/homebrew) it won't be yet.
+if ! command -v brew >/dev/null 2>&1; then
+	for brew_path in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+		[ -x "$brew_path" ] && eval "$("$brew_path" shellenv)" && break
+	done
+fi
+
 # Upgrade homebrew
 echo "› brew update"
 brew update
