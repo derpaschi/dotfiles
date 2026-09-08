@@ -249,7 +249,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "node \"/Users/paschi/.claude/hooks/gsd-statusline.js\""
+    "command": "bash ~/.claude/statusline.sh",
+	"padding": 0
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,

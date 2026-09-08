@@ -21,7 +21,7 @@ CLAUDE_DIR="$HOME/.claude"
 # link target would dangle from inside ~/.claude/.
 TOPIC_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 
-FILES="settings.json CLAUDE.md"
+FILES="settings.json CLAUDE.md statusline.sh"
 
 mkdir -p "$CLAUDE_DIR"
 
