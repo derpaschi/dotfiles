@@ -119,12 +119,18 @@ This single script does a lot. In order, it will:
    - runs **`script/install`** → **`brew bundle`** (installs everything in the
      `Brewfile`: 1Password, iTerm2, Dropbox, Cursor, VS Code, GPG, PHP, Node,
      Mac App Store apps, editor extensions, npm globals…), then runs every
-     topic's `install.sh` (Mac App Store updates, Claude Code config symlinks,
-     the `pure` prompt).
+     topic's `install.sh` (Mac App Store updates, Claude Code config symlinks).
 
 > ⏳ `brew bundle` is the long part — it downloads and installs dozens of apps.
 > If a single cask fails (e.g. a network blip), re-run `dot` afterwards; it's
 > idempotent.
+
+> 🤖 **Claude Code** is not in the `Brewfile`. Install it afterwards
+> (`curl -fsSL https://claude.ai/install.sh | bash`), then GSD (`npx gsd-core`).
+> `~/.claude/settings.json` and `~/.claude/CLAUDE.md` are already symlinked into
+> `~/.dotfiles/claude/` at this point. GSD rewrites `settings.json` and turns the
+> symlink into a regular file; the next `dot` prints the two commands to adopt the
+> live file into the repo and re-link.
 
 ---
 

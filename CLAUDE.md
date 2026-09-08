@@ -82,6 +82,7 @@ The `dot` command:
 - `git/gitconfig.local.symlink` - Local git config (generated, not tracked)
 - `zsh/zshrc.symlink` - Main zsh configuration
 - `mackup/mackup.cfg.symlink` - mackup config (allowlist of GUI apps synced via Dropbox)
+- `claude/settings.json` / `claude/CLAUDE.md` - Claude Code user config and global instructions, symlinked into `~/.claude/` by `claude/install.sh`
 - `localrc.example` - Template for `~/.localrc` (private env vars, not tracked)
 - `~/.localrc` - Local environment variables (not tracked, sourced if present)
 
@@ -91,6 +92,9 @@ App settings for GUI apps (Cursor, iTerm2, VS Code, Sublime Text, TablePlus, Tow
 - **Capturing installed software:** `mac-snapshot` regenerates the `Brewfile` from what's installed (brews, casks, `mas`, editor extensions, npm globals) so the repo stays a faithful snapshot of the machine
 - **Switching devices:** `mac-snapshot` + `mac-backup` on the old Mac, then `mac-sync` on the new Mac
 - **Fresh Mac setup:** `script/bootstrap` then `mac-restore`
+
+### Claude Code
+`claude/install.sh` links `settings.json` and `CLAUDE.md` into `~/.claude/` and is safe to re-run. GSD and Claude Code rewrite `settings.json` atomically (temp file + rename), which turns the symlink back into a regular file. `dot` then prints a warning with the two commands to adopt the live file into the repo and re-link. Before committing `claude/settings.json`, review the diff: the repo is public, so it must not contain project- or org-specific data (no `autoMode` block, no project-specific permissions).
 
 ### Key Aliases & Functions
 Defined across various `aliases.zsh` files:
@@ -113,6 +117,8 @@ The environment is configured for:
 - **Composer**: Global vendor binaries in PATH
 - **Docker**: With completions and Docker Compose
 - **Pygmy**: Local development environment tool
+
+Tool-specific shell setup lives in topic files (`php/path.zsh`, `node/fnm.zsh`, `ruby/rbenv.zsh`, `rust/env.zsh`, `docker/fpath.zsh`, `scaleway/completion.zsh`, `terminal/completion.zsh`, `zsh/prompt.zsh`). `zsh/zshrc.symlink` only orchestrates loading; when an installer appends to it, move the snippet into a topic.
 
 ## Making Changes
 

@@ -2,38 +2,56 @@
 #
 # Claude Code
 #
-# Sets up Claude Code configuration by symlinking config files
-# to ~/.claude/
+# Links the Claude Code user config from this topic into ~/.claude/. Runs on
+# every `dot`, so it has to be safe to re-run:
+#
+#   missing, dangling or wrong symlink   -> (re)create the link
+#   regular file identical to the repo   -> replace it with the link
+#   regular file that differs            -> leave it alone, print what to do
+#
+# GSD and Claude Code rewrite settings.json atomically (temp file + rename),
+# which turns the symlink back into a regular file. The live file is then the
+# newer one: adopt it into the repo, review `git diff`, re-link.
+
+set -u
 
 CLAUDE_DIR="$HOME/.claude"
-DOTFILES_CLAUDE_DIR="$(dirname "$0")"
 
-# Create ~/.claude directory if it doesn't exist
-if [ ! -d "$CLAUDE_DIR" ]; then
-    echo "Creating $CLAUDE_DIR directory"
-    mkdir -p "$CLAUDE_DIR"
-fi
+# Absolute path. script/install runs us as ./claude/install.sh, and a relative
+# link target would dangle from inside ~/.claude/.
+TOPIC_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 
-# Symlink settings.json
-if [ -f "$CLAUDE_DIR/settings.json" ] && [ ! -L "$CLAUDE_DIR/settings.json" ]; then
-    echo "Backing up existing settings.json"
-    mv "$CLAUDE_DIR/settings.json" "$CLAUDE_DIR/settings.json.backup"
-fi
+FILES="settings.json CLAUDE.md"
 
-if [ ! -L "$CLAUDE_DIR/settings.json" ]; then
-    echo "Linking settings.json"
-    ln -sf "$DOTFILES_CLAUDE_DIR/settings.json" "$CLAUDE_DIR/settings.json"
-fi
+mkdir -p "$CLAUDE_DIR"
 
-# Symlink statusline-command.sh
-if [ -f "$CLAUDE_DIR/statusline-command.sh" ] && [ ! -L "$CLAUDE_DIR/statusline-command.sh" ]; then
-    echo "Backing up existing statusline-command.sh"
-    mv "$CLAUDE_DIR/statusline-command.sh" "$CLAUDE_DIR/statusline-command.sh.backup"
-fi
+for name in $FILES; do
+  src="$TOPIC_DIR/$name"
+  dst="$CLAUDE_DIR/$name"
 
-if [ ! -L "$CLAUDE_DIR/statusline-command.sh" ]; then
-    echo "Linking statusline-command.sh"
-    ln -sf "$DOTFILES_CLAUDE_DIR/statusline-command.sh" "$CLAUDE_DIR/statusline-command.sh"
-fi
+  if [ ! -f "$src" ]; then
+    echo "  [claude] missing in dotfiles, skipping: $src"
+    continue
+  fi
 
-echo "Claude Code configuration linked successfully"
+  if [ -L "$dst" ]; then
+    if [ "$(readlink "$dst")" = "$src" ]; then
+      continue
+    fi
+    echo "  [claude] fixing symlink $dst -> $src"
+    ln -sfn "$src" "$dst"
+  elif [ -e "$dst" ]; then
+    if cmp -s "$src" "$dst"; then
+      echo "  [claude] $dst matches the dotfiles copy, replacing it with a symlink"
+      ln -sfn "$src" "$dst"
+    else
+      echo "  [claude] WARNING: $dst is a regular file and differs from the dotfiles copy."
+      echo "           Leaving it untouched. Review the diff, adopt the live file, re-link:"
+      echo "             diff \"$src\" \"$dst\""
+      echo "             cp \"$dst\" \"$src\" && ln -sfn \"$src\" \"$dst\""
+    fi
+  else
+    echo "  [claude] linking $dst -> $src"
+    ln -sfn "$src" "$dst"
+  fi
+done

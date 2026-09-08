@@ -1,15 +1,51 @@
 {
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "0"
   },
-  "model": "opus[1m]",
+  "permissions": {
+    "allow": [
+      "Bash(npx gsd-core *)",
+      "Read(.planning/*)",
+      "Read(STATE.md)",
+      "mcp__codegraph__codegraph_explore",
+      "mcp__codegraph__codegraph_search",
+      "mcp__codegraph__codegraph_node",
+      "mcp__codegraph__codegraph_callers",
+      "mcp__codegraph__codegraph_callees",
+      "mcp__codegraph__codegraph_impact",
+      "mcp__codegraph__codegraph_files",
+      "mcp__codegraph__codegraph_status",
+      "Edit(.planning/*)",
+      "Edit(STATE.md)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(composer install:*)",
+      "Bash(composer test:*)",
+      "Bash(npm ci:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run build:*)",
+      "Bash(cargo test:*)",
+      "Bash(cargo build:*)"
+    ],
+    "deny": [
+      "Read(.env.local)",
+      "Read(.env.*.local)",
+      "Read(.env.production)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "\"/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin/node\" \"/Users/paschi/.claude/hooks/gsd-check-update.js\""
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-check-update.js\""
           }
         ]
       },
@@ -20,6 +56,16 @@
             "command": "bash \"/Users/paschi/.claude/hooks/gsd-session-state.sh\""
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/paschi/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -28,7 +74,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin/node\" \"/Users/paschi/.claude/hooks/gsd-context-monitor.js\"",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-context-monitor.js\"",
             "timeout": 10
           }
         ]
@@ -38,7 +84,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin/node\" \"/Users/paschi/.claude/hooks/gsd-read-injection-scanner.js\"",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-read-injection-scanner.js\"",
             "timeout": 5
           }
         ]
@@ -52,6 +98,16 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/paschi/.claude/hooks/gsd-graphify-update.sh\"",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -60,8 +116,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin/node\" \"/Users/paschi/.claude/hooks/gsd-prompt-guard.js\"",
-            "timeout": 5
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-prompt-guard.js\"",
+            "timeout": 120
           }
         ]
       },
@@ -70,18 +126,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin/node\" \"/Users/paschi/.claude/hooks/gsd-read-guard.js\"",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-read-guard.js\"",
             "timeout": 5
           }
         ]
       },
       {
-        "matcher": "Write|Edit",
+        "matcher": "Bash|Edit|Write|MultiEdit",
         "hooks": [
           {
             "type": "command",
-            "command": "\"/Users/paschi/.local/share/fnm/node-versions/v22.19.0/installation/bin/node\" \"/Users/paschi/.claude/hooks/gsd-workflow-guard.js\"",
-            "timeout": 5
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-workflow-guard.js\"",
+            "timeout": 120
           }
         ]
       },
@@ -91,7 +147,7 @@
           {
             "type": "command",
             "command": "bash \"/Users/paschi/.claude/hooks/gsd-validate-commit.sh\"",
-            "timeout": 5
+            "timeout": 120
           }
         ]
       },
@@ -101,6 +157,91 @@
           {
             "type": "command",
             "command": "rtk hook claude"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-worktree-path-guard.js\"",
+            "timeout": 120
+          }
+        ]
+      },
+      {
+        "matcher": "Agent|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-agent-isolation-guard.js\"",
+            "timeout": 120
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-write-guard.js\"",
+            "timeout": 120
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Grep|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-secret-read-guard.js\"",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-context-monitor.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-context-monitor.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-context-monitor.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "FileChanged": [
+      {
+        "matcher": "config.json",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"/Users/paschi/.local/share/fnm/aliases/default/bin/node\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" \"/Users/paschi/.claude/hooks/gsd-config-reload.js\"",
+            "timeout": 8
           }
         ]
       }
@@ -115,7 +256,8 @@
     "safety-net@cc-marketplace": true,
     "codex@openai-codex": true,
     "code-review@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "home-assistant-skills@home-assistant-skills": true
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
@@ -123,12 +265,25 @@
         "source": "github",
         "repo": "openai/codex-plugin-cc"
       }
+    },
+    "home-assistant-skills": {
+      "source": {
+        "source": "github",
+        "repo": "homeassistant-ai/skills"
+      }
+    },
+    "cc-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "kenryu42/cc-marketplace"
+      }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
+  "autoCompactWindow": 500000,
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true,
-  "permissions": {
-    "defaultMode": "auto"
-  }
+  "theme": "dark",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
