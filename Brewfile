@@ -80,20 +80,14 @@ cask "visual-studio-code", args: { appdir: "/Applications" }
 cask "vlc", args: { appdir: "/Applications" }
 cask "whatsapp", args: { appdir: "/Applications" }
 mas "AusweisApp", id: 948660805
-mas "Brother iPrint&Scan", id: 1193539993
-mas "GarageBand", id: 682658836
 mas "Harvest", id: 506189836
-mas "iMovie", id: 408981434
 mas "Infuse", id: 1136220934
-mas "Keynote", id: 409183694
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft Outlook", id: 985367838
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
-mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Outbank", id: 1094255754
-mas "Pages", id: 409201541
 mas "Telegram", id: 747648890
 mas "Windows App", id: 1295203466
 mas "WireGuard", id: 1451685025
