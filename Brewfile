@@ -29,8 +29,8 @@ brew "mkcert"
 brew "node"
 brew "node@22"
 brew "nss"
-brew "php@8.2"
-brew "php@8.3", link: true
+brew "php@8.3"
+brew "php@8.4", link: true
 brew "pnpm"
 brew "pure"
 brew "ruby-build"
