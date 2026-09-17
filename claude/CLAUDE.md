@@ -39,6 +39,11 @@
 - Never mention yourself in commit messages or pull requests unless explicitly asked to.
 - Never commit secrets, `.env*` files or credentials. Never force-push shared branches.
 - Do not commit or push unless explicitly asked to.
+- Atomic commits, one concern each, imperative subject line. No Co-Authored-By trailer.
+- Never push, merge, tag or deploy. I do that.
+- Client WordPress repos: `master` deploys to staging, `production` (or `production-lagoon`)
+  deploys live. "The production PR" means a PR master → production with a short summary and
+  step-by-step test instructions for staging. Open it, do not merge it.
 
 ### Git safety (applies to all agents, including spawned subagents)
 

@@ -15,9 +15,9 @@ if (( $#icu_kegs )); then
 fi
 unset icu_kegs
 
-# PHP 8.3 (keg-only versioned formula, so it is not linked into bin/)
-if [[ -d "$brew_prefix/opt/php@8.3" ]]; then
-  export PATH="$brew_prefix/opt/php@8.3/bin:$brew_prefix/opt/php@8.3/sbin:$PATH"
+# PHP 8.4 (keg-only versioned formula, so it is not linked into bin/)
+if [[ -d "$brew_prefix/opt/php@8.4" ]]; then
+  export PATH="$brew_prefix/opt/php@8.4/bin:$brew_prefix/opt/php@8.4/sbin:$PATH"
 fi
 
 unset brew_prefix
