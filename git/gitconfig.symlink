@@ -28,6 +28,7 @@
 
 [gpg]
 	program = /usr/local/bin/gpg
+	format = ssh
 
 [core]
 	attributesfile = ~/.gitattributes
@@ -82,7 +83,7 @@
     useConfigOnly = true
 	name = Stefan Pasch
 	email = stefan.pasch@gmail.com
-	signingkey = B2A7170740AFF762
+	signingkey = /Users/paschi/.ssh/id_ed25519
 
 [include]
 	# use separate file for username / github token / etc.
@@ -99,3 +100,5 @@
 	defaultBranch = master
 [credential]
 	helper = osxkeychain
+[gpg "ssh"]
+	allowedSignersFile = /Users/paschi/.ssh/allowed_signers
