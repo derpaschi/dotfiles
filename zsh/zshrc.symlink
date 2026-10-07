@@ -53,3 +53,7 @@ unset config_files
 
 # Turso
 export PATH="$PATH:/Users/paschi/.turso"
+
+# >>> railway initialize >>>
+source "$HOME/.railway/env"
+# <<< railway initialize <<<

@@ -19,6 +19,7 @@
 - Prefer language and framework idioms over clever custom constructs.
 - Security first: keep the OWASP Top 10 in mind. Never weaken validation, escaping, authentication, authorization or nonce checks to make something "work".
 - Follow the project's existing tooling (linters, formatters, test runners). Add or extend tests for changed behaviour where a test setup exists.
+- Use TDD (test driven development) when possible and useful
 
 ## Code reviews
 
@@ -38,8 +39,10 @@
 - Commit messages in English, imperative mood, short subject line ("Add …", "Fix …", "Remove …").
 - Never mention yourself in commit messages or pull requests unless explicitly asked to.
 - Never commit secrets, `.env*` files or credentials. Never force-push shared branches.
+- Never put GSD framework related infos into commit messages (no "(10-04)" for phases etc.)
 - Do not commit or push unless explicitly asked to.
 - Atomic commits, one concern each, imperative subject line. No Co-Authored-By trailer.
+- Don't use references to GSD planning Tasks or waves in commit messages titles, as nobody of the team knows them, use them in the detailed commit description if neccessary.
 - Never push, merge, tag or deploy. I do that.
 - Client WordPress repos: `master` deploys to staging, `production` (or `production-lagoon`)
   deploys live. "The production PR" means a PR master → production with a short summary and
@@ -114,3 +117,15 @@ something a reader can rely on; "links added" is not.
 
 - When a project has `.codegraph/`, use the `codegraph_*` MCP tools for **structural** questions (definitions, callers, impact, flows) and grep/Read for literal text. Start with `codegraph_explore`; the server's own instructions describe the remaining tools. Answer directly from the results, don't re-verify them with grep and don't delegate the lookup to a file-reading agent.
 - If the server reports "not initialized", ask before running `codegraph init -i`.
+
+## Code Quality and Commenting
+
+Always document the “why” in short sentences - don’t go into too much detail, so the code remains readable. For projects using the GSD Framework, please do not use references such as “D-04”/“D-05” or “spec 5.3,” as team members who do not work with the GSD Framework will not understand them. Comments in the code should always be self-explanatory or reference other code that is readable by everyone on the project.
+
+## Writing tests
+
+- NEVER write unit tests after you write code.
+- If you must test a system in isolation, FIRST write all the ways it could fail, THEN write the code.
+- Tautological tests considered harmful.
+- Change-detector tests considered harmful.
+- Do not create regression tests for bug fixes without a genuine gap in behavior testing.
