@@ -2,6 +2,10 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "0"
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(npx gsd-core *)",
@@ -57,7 +61,7 @@
         ]
       },
       {
-        "matcher": "*",
+        "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
             "type": "command",
@@ -94,16 +98,6 @@
           {
             "type": "command",
             "command": "bash \"/Users/paschi/.claude/hooks/gsd-phase-boundary.sh\"",
-            "timeout": 5
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"/Users/paschi/.claude/hooks/gsd-graphify-update.sh\"",
             "timeout": 5
           }
         ]
@@ -257,7 +251,8 @@
     "codex@openai-codex": true,
     "code-review@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "home-assistant-skills@home-assistant-skills": true
+    "home-assistant-skills@home-assistant-skills": true,
+    "agent-skills@addy-agent-skills": true
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
@@ -277,6 +272,12 @@
         "source": "github",
         "repo": "kenryu42/cc-marketplace"
       }
+    },
+    "addy-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/agent-skills"
+      }
     }
   },
   "effortLevel": "high",
@@ -285,6 +286,5 @@
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "attribution": { "commit": "", "pr": "" }
+  "skipAutoPermissionPrompt": true
 }
