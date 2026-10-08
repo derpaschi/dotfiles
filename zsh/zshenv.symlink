@@ -1,0 +1,2 @@
+. "$HOME/.cargo/env"
+[[ -n "$HERDR_ENV" ]] && export PROCESS_LAUNCHED_BY_Q=1
