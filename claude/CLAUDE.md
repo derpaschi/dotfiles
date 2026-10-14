@@ -76,6 +76,7 @@ explicit confirmation. Approval for one release is not approval for the next.
 - If the logic is very complex, add a mermaid diagram to explain it.
 - No emojis in PRs.
 - Don't use "closes" or "fixes" in PR titles or bodies, to avoid auto-closing issues.
+- Before/after screenshots whenever something visual changed, side by side in a table under a "Screenshots" heading. Attach them with `gh pr create|edit --attach`
 
 ## Safety
 
