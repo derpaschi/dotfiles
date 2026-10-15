@@ -130,3 +130,24 @@ Always document the “why” in short sentences - don’t go into too much deta
 - Tautological tests considered harmful.
 - Change-detector tests considered harmful.
 - Do not create regression tests for bug fixes without a genuine gap in behavior testing.
+
+## Chrome DevTools MCP (https://github.com/ChromeDevTools/chrome-devtools-mcp)
+
+- Drive the browser only when I ask. Use the chrome-devtools MCP; don't clone the profile,
+  launch your own Chrome, or fall back to Playwright/agent-browser unless I name them.
+- Only the parent session drives the browser. Never give subagents browser work.
+- On "browser is already running": find the owner (`ps -axo pid,lstart,command | grep
+  chrome-profile | grep -v -- --type=`), report it, stop. Kill it only after I say "take over".
+- Login is mine. Open the sign-in page in a new tab, tell me, wait. Never type credentials.
+- Work in a tab you opened with new_page. Never navigate, resize, emulate or script a tab you
+  didn't open. Close your tabs when done.
+- Navigate with navigate_page, never from evaluate_script (location.assign, router.visit).
+  Wait with wait_for, not setTimeout loops.
+- evaluate_script is read-only against my profile. Never import app modules to call
+  reset/clear/delete functions; ask first and use an isolated context.
+- Prefer take_snapshot plus click/fill/press_key over synthetic DOM events.
+- Filter console (types error/warn, pageSize) and network (resourceTypes). Never dump all.
+- Screenshots stay inline; filePath to the scratchpad is denied.
+- Undo emulation before finishing: networkConditions "Fast 4G", bare emulate, restore viewport.
+- Project-specific browser gotchas go in project memory, not here.
+
