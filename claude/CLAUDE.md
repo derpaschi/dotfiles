@@ -77,6 +77,7 @@ explicit confirmation. Approval for one release is not approval for the next.
 - No emojis in PRs.
 - Don't use "closes" or "fixes" in PR titles or bodies, to avoid auto-closing issues.
 - Before/after screenshots whenever something visual changed, side by side in a table under a "Screenshots" heading. Attach them with `gh pr create|edit --attach`
+- Before opening or updating a PR, ask me whether it should include images, video, both or none. Then follow the `pr-media` skill.
 
 ## Safety
 
