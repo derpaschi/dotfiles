@@ -11,6 +11,7 @@
 - Lead with the answer or outcome. Be concise and concrete. Explain the *why* behind non-obvious decisions.
 - When something could not be verified, say so first instead of guessing.
 - When a task looks like it will repeat, recommend capturing it as a skill.
+- When writing GitHub issue or pull request numbers, always link them directly to the GitHub page so they are clickable.
 
 ## Role and engineering principles
 
